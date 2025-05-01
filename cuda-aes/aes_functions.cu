@@ -6,6 +6,9 @@
 #define Nk 4
 #define Nr 10
 
+
+
+
 __device__ __constant__ uint8_t sbox[256] = {
     0x63,0x7c,0x77,0x7b,0xf2,0x6b,0x6f,0xc5,0x30,0x01,0x67,0x2b,0xfe,0xd7,0xab,0x76,
     0xca,0x82,0xc9,0x7d,0xfa,0x59,0x47,0xf0,0xad,0xd4,0xa2,0xaf,0x9c,0xa4,0x72,0xc0,
@@ -290,6 +293,32 @@ __global__ void AES_decrypt_kernel_ecb(uint8_t* data, uint8_t* result, const uin
     }
 }
 
+__global__ void AES_decrypt_kernel_cbc(uint8_t* data, uint8_t* result, const uint8_t* key, const uint8_t* iv, int numBlocks) {
+    int idx = blockIdx.x;
+    if (idx < numBlocks) {
+        uint8_t roundKeys[176];
+        KeyExpansion(key, roundKeys);
+
+        uint8_t prevCipher[16];
+        if (idx == 0) {
+            for (int i = 0; i < 16; i++) prevCipher[i] = iv[i];
+        } else {
+            for (int i = 0; i < 16; i++) prevCipher[i] = data[(idx - 1) * 16 + i];
+        }
+
+        uint8_t decrypted[16];
+        AES_decrypt(&data[idx * 16], decrypted, roundKeys);
+
+        for (int i = 0; i < 16; i++) {
+            result[idx * 16 + i] = decrypted[i] ^ prevCipher[i];
+        }
+    }
+}
+
+
+#define AES_decrypt_kernel_ofb AES_encrypt_kernel_ofb
+#define AES_decrypt_kernel_ctr AES_encrypt_kernel_ctr
+
 
 void aes_encrypt_cuda(uint8_t* host_data, size_t total_size, uint8_t key[16], uint8_t mode, uint8_t iv[16]) {
     int numBlocks = total_size / 16;
@@ -352,13 +381,22 @@ void aes_decrypt_cuda(uint8_t* host_data, size_t total_size, uint8_t key[16], ui
         case 0:
             AES_decrypt_kernel_ecb<<<numBlocks, 1>>>(d_input, d_output, d_key, numBlocks);
             break;
+        case 1:
+            AES_decrypt_kernel_cbc<<<numBlocks, 1>>>(d_input, d_output, d_key, d_iv, numBlocks);
+            break;
+        case 2:
+            AES_decrypt_kernel_ofb<<<1, 1>>>(d_input, d_output, d_key, d_iv, numBlocks); 
+            break;
+        case 3:
+            AES_decrypt_kernel_ctr<<<numBlocks, 1>>>(d_input, d_output, d_key, d_iv, numBlocks); 
+            break;
         default:
             std::cerr << "Unsupported mode for decryption.\n";
             cudaFree(d_input); cudaFree(d_output); cudaFree(d_key);
             if (d_iv) cudaFree(d_iv);
             return;
     }
-
+    
     cudaDeviceSynchronize();
     cudaMemcpy(host_data, d_output, total_size, cudaMemcpyDeviceToHost);
 
