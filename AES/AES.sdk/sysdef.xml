@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Project Version="1" Minor="3" DIGEST="">
+	<TOOL_VERSION Version="2018.3"/>
+	<MODE Name="Post-Synthesis"/>
+	<SYSTEMINFO BOARD="www.digilentinc.com:pynq-z1:1.0" PART="xc7z020clg400-1" ARCH="zynq" PACKAGE="clg400" DEVICE="7z020" SPEED="-1" LUT="53200" FF="106400" BRAM="140" DSP="220"/>
+	<HIERARCHY Name="aes_bd_wrapper"/>
+	<File Type="HW_HANDOFF" Name="aes_bd.hwh" DESIGN_HIERARCHY="aes_bd_i" BD_TYPE="DEFAULT_BD"/>
+	<File Type="BD_TCL" Name="aes_bd_bd.tcl"/>
+	<File Type="HW_HANDOFF" Name="aes_bd_axi_smc_0.hwh" DESIGN_HIERARCHY="aes_bd_i/axi_smc/inst" BD_TYPE="SCOPED_BD"/>
+	<File Type="BD_TCL" Name="aes_bd_axi_smc_0_bd.tcl"/>
+	<File Type="BIT" Name="aes_bd_wrapper.bit"/>
+	<DRIVERS>
+		<DRIVER IP_VLNV="xilinx.com:hls:aes_encrypt_top:1.0">
+			<File PATH="drivers/aes_encrypt_top_v1_0/data/aes_encrypt_top.mdd"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/data/aes_encrypt_top.tcl"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/src/Makefile"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/src/xaes_encrypt_top.c"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/src/xaes_encrypt_top.h"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/src/xaes_encrypt_top_hw.h"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/src/xaes_encrypt_top_linux.c"/>
+			<File PATH="drivers/aes_encrypt_top_v1_0/src/xaes_encrypt_top_sinit.c"/>
+		</DRIVER>
+	</DRIVERS>
+	<BOARD Type="NotIntegrated">
+		<BASEBOARD Name="www.digilentinc.com:pynq-z1:1.0">
+		</BASEBOARD>
+	</BOARD>
+	<USEDRESOURCES LUT="7642" FF="8027" BRAM="12" DSP="0"/>
+</Project>
+
