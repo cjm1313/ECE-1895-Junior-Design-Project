@@ -15,7 +15,7 @@ class AesWindow(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(100)
         
-        self.executable = None # path to executable predefined
+        self.executable = "/Users/Cjame/Documents/ECE-1895-Junior-Design-Project/src/aes_cuda.exe" # path to executable predefined
         self.input_bmp = None # path to input image
 
 
@@ -68,18 +68,18 @@ class AesWindow(QMainWindow):
     @pyqtSlot()
     def run(self):
         if self.executable != None and self.input_bmp != None and self.mode != None: 
-            if self.key_hex == None:
+            if self.key_hex == None or self.key_hex == "":
                 key = "00000000000000000000000000000000"
             else:
                 key = self.key_hex
             
-            if self.iv_hex == None:
+            if self.iv_hex == None or self.iv_hex == "":
                 iv = "00000000000000000000000000000000"
             else:
-                iv = self.iv
+                iv = self.iv_hex
 
 
-            output_bmp = self.mode + "_encrypt.bmp" if self.encrypt else self.mode + "_decrypt.bmp"
+            output_bmp = "src/images/" + self.mode + "_encrypt.bmp" if self.encrypt else "src/images/" + self.mode + "_decrypt.bmp"
             encrypt_str = "encrypt" if self.encrypt else "decrypt"
             args = [self.executable, encrypt_str, self.input_bmp, output_bmp, key, self.mode, iv]
 
