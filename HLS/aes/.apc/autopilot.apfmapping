@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="aes_encrypt.cpp" path="C:\Users\aeone\AppData\Roaming\Xilinx\Vivado\aes\aes_encrypt.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="aes_encrypt_tb.cpp" path="C:\Users\aeone\AppData\Roaming\Xilinx\Vivado\aes\aes_encrypt_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -1,0 +1,1 @@
+set ::AESL_AUTOSIM::gTopFileName aes_encrypt.cpp_pre.cpp.tb.cpp

@@ -1,0 +1,5 @@
+   Build using "C:/Xilinx/Vivado/2018.3/msys64/mingw64/bin/g++"
+   Compiling apatb_aes_encrypt_hls_stream.cpp
+   Compiling aes_encrypt_tb.cpp_pre.cpp.tb.cpp
+   Compiling aes_encrypt.cpp_pre.cpp.tb.cpp
+   Generating cosim.tv.exe

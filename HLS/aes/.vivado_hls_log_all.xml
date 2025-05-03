@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('sboxSub_V_1_load_13', aes/aes_encrypt.cpp:101->aes/aes_encrypt.cpp:178->aes/aes_encrypt.cpp:219) on array 'sboxSub_V_1' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'sboxSub_V_1'." projectName="aes" solutionName="solution1" date="2025-04-22T00:07:31.035-0400" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Apr 13 21:46:17 2020
+# Process ID: 26032
+# Current directory: C:/Users/aeone/AppData/Roaming/Xilinx/Vivado/aes/solution1/sim/vhdl
+# Command line: xsim.exe -mode tcl -source {xsim.dir/aes_encrypt_hls_stream/xsim_script.tcl}
+# Log file: C:/Users/aeone/AppData/Roaming/Xilinx/Vivado/aes/solution1/sim/vhdl/xsim.log
+# Journal file: C:/Users/aeone/AppData/Roaming/Xilinx/Vivado/aes/solution1/sim/vhdl\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/aes_encrypt_hls_stream/xsim_script.tcl
+# xsim {aes_encrypt_hls_stream} -autoloadwcfg -tclbatch {aes_encrypt_hls_stream.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source aes_encrypt_hls_stream.tcl
+## run all
+Note: simulation done!
+Time: 1275 ns  Iteration: 1  Process: /apatb_aes_encrypt_hls_stream_top/generate_sim_done_proc  File: C:/Users/aeone/AppData/Roaming/Xilinx/Vivado/aes/solution1/sim/vhdl/aes_encrypt_hls_stream.autotb.vhd
+Failure: NORMAL EXIT (note: failure is to force the simulator to stop)
+Time: 1275 ns  Iteration: 1  Process: /apatb_aes_encrypt_hls_stream_top/generate_sim_done_proc  File: C:/Users/aeone/AppData/Roaming/Xilinx/Vivado/aes/solution1/sim/vhdl/aes_encrypt_hls_stream.autotb.vhd
+$finish called at time : 1275 ns
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Apr 13 21:46:28 2020...

@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"aes_encrypt_top": {
+			"proto_instances": {
+			}
+		}
+	}
+}
